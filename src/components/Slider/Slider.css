@@ -1,0 +1,7 @@
+.carousel .slider-wrapper{
+  /* width: 80%; */
+  height:500px
+}
+.carousel .thumb{
+  display:none;
+}
