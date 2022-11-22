@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -8,4 +10,123 @@
 	--mainColorLight: #5767aa;
 	--secondaryColor: #db2b39;
 	--textColor: #eee;
+}
+
+/* .login{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	height: 100vh;
+	background-color: var(--mainColor);
+}
+.login form{
+	display: flex;
+	flex-direction: column;
+	padding: 50px;
+	background: #fff;
+	width: 200px;
+	gap: 20px;
+
+}
+
+.login input{
+	padding: 10px;
+	border: none;
+	border-bottom: 1px solid gray;
+}
+ */
+.login{
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+}
+
+.login-bg{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background: var(--mainColor);
+}
+.login-bg img{
+	margin-top: 280px;
+	margin-left: 60px;
+	/* margin: 0 auto; */
+	width:500px
+	
+}
+
+.login-content{
+	display: flex;
+	 width: 100%;
+	height: 100%; 
+	justify-content: center;
+	align-items: center;
+}
+
+.login-content .form-bx{
+	width: 50%;
+}
+.login-content .form-bx h2{
+font-weight: 600;
+font-family: 'Poppins', sans-serif;
+font-size: 1.5rem;
+text-transform: uppercase;
+margin-bottom: 20px;
+display: inline-block;
+letter-spacing: 1px;
+}
+
+.input-bx{
+	margin-bottom: 20px;
+}
+
+.input-bx span{
+	font-family: sans-serif;
+	font-size: 14px;
+	margin-bottom: 5px;
+	display: inline-block;
+	font-weight: 300;
+	letter-spacing: 1px;
+}
+.input-bx input{
+	width: 100%;
+	padding: 10px 20px;
+	font-weight: 400;
+	border: 1px solid #607d8b;
+	font-size: 16px;
+	letter-spacing: 1px;
+	color: #607d8b;
+	background: transparent;
+	border-radius: 30px;
+}
+
+.input-bx button{
+	background: #083AA9;
+	font-family: sans-serif;
+	color:#fff;
+	border: none;
+	border-radius: 20px;
+	font-weight: 500;
+	cursor: pointer;
+	padding: 15px 30px;
+	/* margin-left: 0px; */
+	width: 30%;
+}
+.input-bx button:hover{
+	background: #293462;
+}
+.input-bx p span{
+	padding: 7px;
+	font-size: 12px;
+	text-align: center;
+}
+@media only screen and (max-width: 1024px) {
+	.login-bg{
+		display: none;
+	}
+	.input-bx button{
+		width: 100%;
+	}
 }
