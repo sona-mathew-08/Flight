@@ -1,26 +1,23 @@
 import React from 'react'
 import './Header.css'
+import {Link} from 'react-router-dom'
+import {FaPlaneDeparture,FaCheckCircle}  from "react-icons/fa"
 const Header = () => {
   return (
-    <div className='header-search'>
-    <form className="header-search-form" action = "" method = "">
-			<div>
-				<input class = "search-form from" type = "text" name = "source" placeholder = "From" required/>
-			</div>
-			<div class="switch-places"></div>
-			<div class="to">
-				<input class = "search-form" type = "text" name = "dest" placeholder = "Destination" required/>
-			</div>
-			<div class="date">	
-				
-				<input class = "search-form" type = "date" name = "depDate" placeholder = "Departure Date"  />
-			</div>
-			<div class="options">
-				<input class = "search-form" type = "number" name = "totalPeople" placeholder = "No. Of People" required min = "1"/>
-			</div>
-			<button class="search-button btn " type="submit" data-metric="search-form submit">Find</button>
-		</form>
-    </div>
+	<div className='header'>
+	<Link className='link' to="/booking">
+		<div className="book">
+			<FaPlaneDeparture size="2rem" color='var(--mainColor)'/>
+			<h4>Book Flight</h4>
+		</div>
+	</Link>
+	<Link className=" link"to="/flight-status">
+		<div className='check-booked'>
+			<FaCheckCircle size="2rem" color='var(--mainColor)'/>
+			<h4>Check Flight Status</h4>
+		</div>
+		</Link>
+		</div>
   )
 }
 

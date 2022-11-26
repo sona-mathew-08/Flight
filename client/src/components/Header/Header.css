@@ -1,43 +1,39 @@
-.header-search{
+.header{
     height:100px;
     background-color: var(--mainColor);
+	display:flex;
+	justify-content: center;
+	align-items: center;
 }
-.header-search-form{
-    margin-left: 180px;
-}
-.search-form{
-	width : 15%;
-	border : none;
-	float:left;
-	height : 4rem;
-	text-align:center;
-	outline : none;
-	border-radius : 0;
+.header .link {
+	/* margin: 0 1rem; */
+	color: var(--mainColor);
+	text-decoration: none;
+    font-family: sans-serif;
+    transition: font-size 0.75s;
 }
 
-.from{
-	border-radius : 7px 0 0 7px;
+.header .link:hover {
+    
+	font-size: 18px;
 }
-
-.search-form:hover{
-	border-bottom : solid #007bff 2px;
+.header h4{
+	padding-left: 6px;
 }
-
-.search-button{
-	width : 15%;
-	border: none;
-	height : 4rem;
-	color : white;
-	outline : none;
-	border-radius : 0 7px 7px 0;
+.book,.check-booked{
+	background:#fff;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+	margin-bottom: 30px;
+	
 }
-.btn{
-    /* background-color: var(--mainColor); */
-    color: var(--mainColor);
+.book{
+	border-radius: 20px 0 0 20px;
 }
-
-@media only screen and (max-width: 1024px) {
-    .header-search{
-        visibility: hidden;
-    }
+.check-booked{
+	
+	border-radius: 0 20px  20px 0;
+	
 }
