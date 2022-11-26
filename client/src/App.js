@@ -7,22 +7,24 @@ import './App.css'
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import Booking from "./pages/Booking";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Booking from "./pages/Booking";
 
 
-const Layout =()=>{
+function Layout() {
   return (
+    
     <>
-      <Navbar/>
-      <Home/>
-      <Footer/>
+      <Navbar />
+      <Home />
+      <Footer />
 
     </>
-    
 
-  )
+
+  );
 }
 
 const router = createBrowserRouter([

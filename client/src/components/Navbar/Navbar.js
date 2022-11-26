@@ -29,10 +29,10 @@ const Navbar = () => {
                 <Link className='link'>
                     <h4>Partners</h4>
                 </Link>
-                <Link className='link'>
+                <Link className='link' to="/register">
                     <h4>Register</h4>
                 </Link>
-                <Link className='link'>
+                <Link className='link' to="/login">
                     <h4>Login</h4>
                 </Link>
                 {/*<button className='nav-button'>Register</button>
