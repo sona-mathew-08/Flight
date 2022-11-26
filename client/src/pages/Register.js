@@ -3,6 +3,8 @@ import '../App.css'
 import Logo from "../images/logo.png"
 import {Link} from "react-router-dom"
 
+
+
 const Register = () => {
   return (
     <div className='login'>

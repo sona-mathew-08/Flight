@@ -34,6 +34,10 @@ const Slider = () => {
                     <img src={Slider5} height="600px"/>
                   
                 </div>
+                <div>
+                    <img src={Slider1}  />
+                    
+                </div>
             </Carousel>
   )
 }

@@ -1,0 +1,15 @@
+.footer{
+    background-color: var(--mainColor);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 16px;
+    padding: 20px;
+}
+
+.footer img{
+    height: 50px;
+}
+.footer span{
+    color: #fff;
+}
