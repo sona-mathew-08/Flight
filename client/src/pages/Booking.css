@@ -1,0 +1,157 @@
+
+.booking .input-bx{
+	margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+
+
+.booking .input-bx span{
+	font-family: sans-serif;
+	font-size: 14px;
+	margin-bottom: 5px;
+	display: inline-block;
+	font-weight: 300;
+	letter-spacing: 1px;
+    color: black;
+    width: 250px;
+}
+.booking .input-bx input{
+	
+	padding: 10px 20px;
+    max-width: 350px;
+	font-weight: 400;
+	border: 1px solid #607d8b;
+	font-size: 16px;
+	letter-spacing: 1px;
+	color: #607d8b;
+	background: transparent;
+	border-radius: 30px;
+}
+
+.booking .input-bx button{
+	background: #083AA9;
+	font-family: sans-serif;
+	color:black;
+	border: none;
+	border-radius: 20px;
+	font-weight: 500;
+	cursor: pointer;
+	padding: 15px 30px;
+	/* margin-left: 0px; */
+	width: 30%;
+}
+.booking .input-bx button:hover{
+	background: #293462;
+}
+.booking .input-bx p span{
+	padding: 7px;
+	font-size: 12px;
+	text-align: center;
+}
+@media only screen and (max-width: 1024px) {
+	.login-bg{
+		display: none;
+	}
+	.input-bx button{
+		width: 100%;
+	}
+}
+
+.booking 
+{
+    background-color: #351488;
+   
+    background-size: cover;
+    background-position: center;
+}
+.booking .form-bx
+{
+    max-width: 500px;
+    border: 1px solid #575b60;
+    margin: 10% auto 0;
+    background-color: whitesmoke;
+    box-shadow: 20px;
+}
+
+.booking .input-grp
+{
+    padding: 0 20px 20px;
+    font-family: sans-serif;
+	font-size: 14px;
+	margin: 5px 10px 10px 5px;
+	display: inline-block;
+	font-weight: 300;
+	letter-spacing: 1px;
+    color: black;
+}
+
+.booking .input-grp
+{
+    width: 250px;
+    display: inline-block;
+}
+
+.booking .select-date::-webkit-inner-spin-button,
+.booking .select-date::-webkit-outer-spin-button
+{
+    -webkit-appearance: none;
+    margin: 0;
+}
+.booking .select-date::-webkit-calender-picker-indicator
+{
+    background: transparent;
+}
+.booking .custom-select
+{
+    color: black;
+  
+    border: 1px solid #3a3c3e;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 5px 10px 10px;
+    font-family: sans-serif;
+	font-size: 14px;
+	
+	display: inline-block;
+	font-weight: 300;
+	letter-spacing: 1px;
+      
+}
+.booking .custom-select option
+{
+    color: #333;
+    margin-top: 3px;
+}
+
+.booking .input-bx button{
+	background: #083AA9;
+	font-family: sans-serif;
+	color:#fff;
+	border: none;
+	border-radius: 20px;
+	font-weight: 500;
+	cursor: pointer;
+    margin-left: 125px;
+	padding: 15px 30px;
+	/* margin-left: 0px; */
+	width: 30%;
+}
+
+.booking .input-bx button:hover{
+	background: #293462;
+}
+
+.booking .form-bx {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 10px 20px 20px 10px rgba(100, 84, 206, 0.2);
+    transition: 0.3s;
+  }
+  
+  /* On mouse-over, add a deeper shadow */
+.booking .form-bx:hover {
+    box-shadow: 0 8px 16px 0 rgba(93, 62, 186, 0.2);
+  }
+  
+  /* Add some padding inside the card container */
+  
