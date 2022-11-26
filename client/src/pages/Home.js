@@ -12,7 +12,7 @@ const Home = () => {
     <Header/>
     <Slider/>
    <ServiceSection/>
-   
+   <About/>
     </>
     </div>
   )
