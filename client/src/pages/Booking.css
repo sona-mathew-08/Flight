@@ -1,7 +1,7 @@
 
 .booking .input-bx{
 	margin-bottom: 20px;
-    margin-left: 20px;
+    margin-left: 50px;
 }
 
 
@@ -13,7 +13,7 @@
 	display: inline-block;
 	font-weight: 300;
 	letter-spacing: 1px;
-    color: black;
+    color: white;
     width: 250px;
 }
 .booking .input-bx input{
@@ -24,26 +24,12 @@
 	border: 1px solid #607d8b;
 	font-size: 16px;
 	letter-spacing: 1px;
-	color: #607d8b;
+	color: white;
 	background: transparent;
 	border-radius: 30px;
+	border: 1px solid white;
 }
 
-.booking .input-bx button{
-	background: #083AA9;
-	font-family: sans-serif;
-	color:black;
-	border: none;
-	border-radius: 20px;
-	font-weight: 500;
-	cursor: pointer;
-	padding: 15px 30px;
-	/* margin-left: 0px; */
-	width: 30%;
-}
-.booking .input-bx button:hover{
-	background: #293462;
-}
 .booking .input-bx p span{
 	padding: 7px;
 	font-size: 12px;
@@ -57,11 +43,16 @@
 		width: 100%;
 	}
 }
-
-.booking 
+.booking h2{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	text-align: center;
+	color: white;
+}
+.booking
 {
-    background-color: #351488;
-   
+    /*background-color: #351488;*/
+	background-color: white;
     background-size: cover;
     background-position: center;
 }
@@ -69,10 +60,12 @@
 {
     max-width: 500px;
     border: 1px solid #575b60;
-    margin: 10% auto 0;
-    background-color: whitesmoke;
-    box-shadow: 20px;
-	margin-top: 0;
+    margin: 5% auto 0;
+    background-color:#22056d;
+    box-shadow: 0px 0px 5px 5px;
+	
+	box-shadow: #29028d;
+	margin-top: 10px 10px;
 }
 
 .booking .input-grp
@@ -84,13 +77,15 @@
 	display: inline-block;
 	font-weight: 300;
 	letter-spacing: 1px;
-    color: black;
+    color: white;
+	margin-left: 30px;
 }
 
 .booking .input-grp
 {
     width: 250px;
     display: inline-block;
+	
 }
 
 .booking .select-date::-webkit-inner-spin-button,
@@ -101,19 +96,20 @@
 }
 .booking .select-date::-webkit-calender-picker-indicator
 {
-    background: transparent;
+    background:transparent;
 }
 .booking .custom-select
 {
-    color: black;
-  
-    border: 1px solid #3a3c3e;
+    color: white;
+	background-color: #22056d;
+  text-decoration: solid;
+    border: 1px solid white;
     box-shadow: none;
-    border-radius: 0;
+    border-radius: 5px;
     padding: 5px 10px 10px;
     font-family: sans-serif;
 	font-size: 14px;
-	
+	margin-left: 20px;
 	display: inline-block;
 	font-weight: 300;
 	letter-spacing: 1px;
@@ -121,26 +117,28 @@
 }
 .booking .custom-select option
 {
-    color: #333;
+    color: white;
     margin-top: 3px;
 }
 
 .booking .input-bx button{
-	background: #083AA9;
+	background:white;
 	font-family: sans-serif;
-	color:#fff;
+	color:rgb(16, 8, 101);
 	border: none;
+	box-shadow: white;
 	border-radius: 20px;
-	font-weight: 500;
+	font-weight: 900;
 	cursor: pointer;
-    margin-left: 125px;
+    margin-left: 100px;
 	padding: 15px 30px;
 	/* margin-left: 0px; */
 	width: 30%;
 }
 
 .booking .input-bx button:hover{
-	background: #293462;
+	background: rgb(74, 74, 188);
+	color: white;
 }
 
 .booking .form-bx {
