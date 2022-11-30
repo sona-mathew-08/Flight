@@ -8,6 +8,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Booking from "./pages/Booking";
+import Thankyou from "./pages/Thankyou";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import BookingForm from "./pages/BookingForm";
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
   {
     path: "/flight-status",
     element: <FlightStatus/>,
+  },
+  {
+    path: "/thankyou",
+    element: <Thankyou/>,
   }
 ]);
 

@@ -50,12 +50,13 @@ const Booking = () => {
               <option value={"3"}>Economy</option>
               </select>
           </div>
-         
+          
           <div className="input-bx"> 
-      
+      <Link to="/thankyou">
             <button type='submit' >
               
-                Book Ticket</button>
+                <h4>Book Ticket</h4></button>
+                </Link>
           </div>
          
         </form>
