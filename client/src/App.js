@@ -2,6 +2,7 @@ import {
   createBrowserRouter,
   RouterProvider,
   Route,
+  Outlet
 } from "react-router-dom";
 import './App.css'
 import Register from "./pages/Register";
@@ -20,7 +21,7 @@ function Layout() {
     
     <>
       <Navbar />
-      <Home />
+      <Outlet />
       <Footer />
 
     </>
@@ -38,7 +39,19 @@ const router = createBrowserRouter([
         path:"/",
         element:<Home/>
       },
-    ]
+      {
+        path: "/booking",
+        element: <Booking/>,
+      },
+      {
+        path: "/booking-form",
+        element: <BookingForm/>,
+      },
+      {
+        path: "/flight-status",
+        element: <FlightStatus/>,
+      },
+   ]
   },
   {
     path: "/register",
@@ -48,18 +61,7 @@ const router = createBrowserRouter([
     path: "/login",
     element: <Login/>,
   },
-  {
-    path: "/booking",
-    element: <Booking/>,
-  },
-  {
-    path: "/booking-form",
-    element: <BookingForm/>,
-  },
-  {
-    path: "/flight-status",
-    element: <FlightStatus/>,
-  },
+  
   {
     path: "/thankyou",
     element: <Thankyou/>,
