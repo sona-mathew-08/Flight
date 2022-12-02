@@ -1,9 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../App.css'
 import Logo from "../images/logo.png"
-import {Link} from "react-router-dom"
+import axios from 'axios'
+import {Link, useNavigate} from "react-router-dom"
 
 const Login = () => {
+
+  const [inputs,setInputs]=useState({
+    username:"",
+    password:""
+  })
+  const [err,setError] = useState(null);
+  const navigate = useNavigate;
+
+  const handleChange = e=>{
+    setInputs(prev=>({...prev,[e.target.name]:e.target.value}))
+  }
+
+  const handleSubmit= async (e) =>{
+    e.preventDefault()
+    try{
+       await axios.post("/register",inputs)
+       navigate("/")
+    }catch(err){
+      setError(err.response.data);
+    }
+  }
+
   return (
     <div className='login'>
     <div className="login-bg">
@@ -15,14 +38,15 @@ const Login = () => {
         <form action="">
           <div className="input-bx">
               <span>Username</span>
-              <input type="text" name='username' />
+              <input type="text" name='username' onChange={handleChange}/>
           </div>
           <div className="input-bx">
               <span>Password</span>
-              <input type="password" name='password' />
+              <input type="password" name='password' onChange={handleChange}/>
           </div>
           <div className="input-bx">
             <button type='submit'>Login</button>
+            {err&&<p className='error'>{err}</p>}
           </div>
           <div className="input-bx">
             <p>Don't have an account?<span><Link to="/register">Register</Link></span></p> 
