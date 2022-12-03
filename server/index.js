@@ -68,7 +68,17 @@ app.post('/login', (req, res) => {
         }
     })
 });
-
+app.get("/booking",(req,res)=>{
+    let query="select departure,destination,boarding_time,arrival_time,flight_name from flight_details";
+    db.query(query,(err,results) => {
+     if(err) {
+      return res.status(400).json({err});
+    }
+     return res.status(200).json(
+         { data:results,message:"Displayed"}
+     )
+    })
+ });
 app.get("/flight-status/:id",(req,res)=>{
     const {id} = req.params;
     let query="select a.first_name,a.last_name,a.age,a.contact_no,a.travel_class,b.departure,b.destination,b.boarding_time,b.arrival_time,b.boarding_date,b.arrival_date,b.fare,b.dep_terminal,b.des_terminal from passenger_details a join flight_booking_details c on a.passenger_id=c.passenger_id join flight_details b on c.flight_id=b.flight_id where c.passenger_id= ?";
@@ -77,7 +87,7 @@ app.get("/flight-status/:id",(req,res)=>{
       return res.status(400).json({err});
     }
      return res.status(200).json(
-         { data:results}
+         { data:results,message:"Displayed"}
      )
     })
  });
