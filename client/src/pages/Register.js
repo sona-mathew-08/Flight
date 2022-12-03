@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import '../App.css'
 import Logo from "../images/logo.png"
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import axios from "axios"
 
 
@@ -12,6 +12,9 @@ const Register = () => {
     password:""
   })
 
+  const [err,setError] = useState(null);
+  const navigate = useNavigate;
+
   const handleChange = e=>{
     setInputs(prev=>({...prev,[e.target.name]:e.target.value}))
   }
@@ -19,10 +22,10 @@ const Register = () => {
   const handleSubmit= async (e) =>{
     e.preventDefault()
     try{
-      const res = await axios.post("/register",inputs)
-      console.log(res);
+       await axios.post("/register",inputs)
+       navigate("/login")
     }catch(err){
-console.log(err);
+      setError(err.response.data);
     }
   }
   return (
@@ -48,6 +51,7 @@ console.log(err);
           </div>
           <div className="input-bx">
             <button type='submit' onClick={handleSubmit}>Register</button>
+            {err&&<p className='error'>{err}</p>}
           </div>
           <div className="input-bx">
             <p>Already have an account?<span><Link to="/login">Login</Link></span></p> 
