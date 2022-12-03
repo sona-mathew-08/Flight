@@ -13,7 +13,7 @@ const Register = () => {
   })
 
   const [err,setError] = useState(null);
-  const navigate = useNavigate;
+  const navigate = useNavigate();
 
   const handleChange = e=>{
     setInputs(prev=>({...prev,[e.target.name]:e.target.value}))
