@@ -20,7 +20,7 @@ const Login = () => {
   const handleSubmit= async (e) =>{
     e.preventDefault()
     try{
-       await axios.post("/register",inputs)
+       await axios.post("/login",inputs)
        navigate("/")
     }catch(err){
       setError(err.response.data);
@@ -45,7 +45,7 @@ const Login = () => {
               <input type="password" name='password' onChange={handleChange}/>
           </div>
           <div className="input-bx">
-            <button type='submit'>Login</button>
+            <button type='submit' onClick={handleSubmit}>Login</button>
             {err&&<p className='error'>{err}</p>}
           </div>
           <div className="input-bx">

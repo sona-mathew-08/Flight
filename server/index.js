@@ -20,10 +20,7 @@ app.post("/register", (req, res) => {
 
     db.query("SELECT username from User_details where username='" + username + "'", (err, result) => {
         if (result.length > 0) {
-            return res.json({
-                status: "error",
-                error: "User " + username + " is already registered"
-            });
+            res.status(409).json("User already exists!");
         } else {
             db.query("INSERT INTO User_details(user_id,username, email, password) SELECT COALESCE(MAX(user_id), 0)+1,'" + username + "','" +
                 email + "','" + password + "' from User_details", (err, result) => {
@@ -59,13 +56,10 @@ app.post('/login', (req, res) => {
                     error: ""
                 });
             else {
-                return res.json({
-                    status: "error",
-                    error: "Invalid password"
-                });
+                res.status(400).json("Wrong username or password!")
             }
         } else {
-            return res.json({
+            return res.status(400).json({
                 status: "error",
                 error: "Not a registered user"
             });
