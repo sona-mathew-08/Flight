@@ -11,6 +11,7 @@ const db = mysql.createConnection({
     host: "localhost",
     password: "password",
     database: "Flight",
+    multipleStatements: true
 });
 
 app.post("/register", (req, res) => {
@@ -67,6 +68,161 @@ app.post('/login', (req, res) => {
     })
 });
 
+app.post('/booking/:userid',async function(req,res) {
+    const firstname = req.body.fname;
+    const lastname = req.body.lname;
+    const age = req.body.age;
+    const contactno = req.body.contact;
+    const flightname = req.body.flightname;
+    const flyingfrom = req.body.source;
+    const flyingto = req.body.destination;
+    const boardingdate = req.body.boardingdate;
+    const arrivaldate = req.body.arrivaldate;
+    const {userid} = req.params;
+    const travelclass = req.body.travelclass;
+    var f_id="";
+    var p_id="";
+    
+    db.query("SELECT flight_id from flight_details where flight_name='" +flightname+"' and departure='" +flyingfrom+ "' and destination='" +flyingto+"' and boarding_date='" 
+    +boardingdate+"' and arrival_date='" +arrivaldate+ "'",(err,result) => {
+        if(err){
+            console.log(err);
+            return res.status(400).json({ status: "error", error: err});
+        }
+        else{
+            if(result.length>0)
+            {
+                f_id=result[0].flight_id;
+                db.query("SELECT passenger_id from passenger_details where first_name='" +firstname+"' and last_name='"+lastname+"'",(err,result) => {
+                    if(err){
+                        console.log(err);
+                        return res.status(400).json({ status: "error", error: err});
+                    }
+                    else{
+                        if(result.length>0){
+                            p_id=result[0].passenger_id;
+                            db.query("SELECT flight_id,user_id,passenger_id from flight_booking_details where flight_id='" + f_id + "' and user_id='" 
+                            + req.params['userid'] + "' and  passenger_id='" + p_id +"'",(err,result) =>{
+                                if(err){
+                                    console.log(err);
+                                    return res.status(400).json({ status: "error", error: err});
+                                }
+                                else{
+                                    if(result.length>0){                                
+                                        return res.status(400).status(400).json({ status: "error", error: "Tickets already booked!"});
+                                    }
+                                    else
+                                    {
+                                        db.query("INSERT INTO flight_booking_details(flight_booking_id, flight_id, user_id, passenger_id) " +
+                                        "SELECT COALESCE(MAX(flight_booking_id), 0)+1,'"  + f_id + "','" + req.params['userid'] + "','" + p_id +
+                                        "' from flight_booking_details" ,(err, result) =>
+                                        {
+                                            if(err) {
+                                                    console.log(err);
+                                                    return res.status(400).json({ status: "error", error: err});
+                                            } else 
+                                            {
+                                                    console.log("Successfull");
+                                                    //res.send("User "+username+" is successfully registered");
+                                                    //return res.status(200).json({ status: "ok", error: "Booked successfully"});
+                                                    return res.status(200).json({ status: "OK", error: ""});//Booked successfully'
+                                            }
+                                        }); 
+                                    }
+                                }
+                            });
+                        }
+                        else
+                        {
+                            db.query("INSERT INTO passenger_details(passenger_id, first_name, last_name, age, contact_no,travel_class) SELECT COALESCE(MAX(passenger_id), 0)+1,'" +firstname  + "','" 
+                            + lastname + "','" + age + "','" + contactno + "','" +travelclass+ "' from passenger_details" ,(err, result) => 
+                            {
+                                if(err) {
+                                    console.log(err);
+                                    return res.status(400).json({ status: "error", error: err});
+                                } 
+                                else {
+                                    console.log("Successfull");
+                                    db.query("SELECT passenger_id from passenger_details where first_name='" +firstname+"' and last_name='"+lastname+"'",(err,result) => {
+                                        if(err){
+                                            console.log(err);
+                                            return res.status(400).json({ status: "error", error: err});
+                                        }
+                                        else{
+                                            if(result.length>0)
+                                            {
+                                                p_id=result[0].passenger_id;
+                                                db.query("INSERT INTO flight_booking_details(flight_booking_id, flight_id, user_id, passenger_id) " +
+                                                "SELECT COALESCE(MAX(flight_booking_id), 0)+1,'"  + f_id + "','" + req.params['userid'] + "','" + p_id +
+                                                "' from flight_booking_details" ,(err, result) =>
+                                                {
+                                                    if(err) {
+                                                            console.log(err);
+                                                            return res.status(400).json({ status: "error", error: err});
+                                                    } else 
+                                                    {
+                                                            console.log("Successfull");
+                                                            //res.send("User "+username+" is successfully registered");
+                                                            return res.status(200).json({ status: "OK", error: ""});//Booked successfully'
+                                                    }
+                                                });
+                                            }
+                                        }
+                                    });                                
+                                }
+
+                            });               
+                        }                                  
+                    }
+                    
+                });
+            }
+            else
+            {
+                return res.status(400).json({ status: "error", error: "flight does not exist"});
+            }
+        }
+    });
+});
+
+//Sai
+app.get("/booking",(req,res)=>{
+    let query="select departure,destination,boarding_time,arrival_time,flight_name from flight_details";
+    db.query(query,(err,results) => {
+     if(err) {
+      return res.status(400).json({err});
+    }
+     return res.status(200).json(
+         { data:results,message:"Displayed"}
+     )
+    })
+ });
+
+app.get("/flight-status/:id",(req,res)=>{
+    const {id} = req.params;
+    let query="select a.first_name,a.last_name,a.age,a.contact_no,a.travel_class,b.departure,b.destination,b.boarding_time,b.arrival_time,b.boarding_date,b.arrival_date,b.fare,b.dep_terminal,b.des_terminal from passenger_details a join flight_booking_details c on a.passenger_id=c.passenger_id join flight_details b on c.flight_id=b.flight_id where c.passenger_id= ?";
+    db.query(query,[id],(err,results) => {
+     if(err) {
+      return res.status(400).json({err});
+    }
+     return res.status(200).json(
+         { data:results,message:"Displayed"}
+     )
+    })
+ });
+
+ app.delete("/flight-status/:id",(req,res)=>{
+    const {id} = req.params;
+    let query="delete from flight_booking_details where passenger_id=?;delete from passenger_details where passenger_id=?;";
+    db.query(query,[id,id],(err,results) => {
+     if(err){ 
+      return res.status(400).json({err});
+     }
+     return res.status(200).json(
+         { message:"deleted"}
+     )
+    })
+ })
 
 app.listen(8040, () => {
     console.log("server running");
