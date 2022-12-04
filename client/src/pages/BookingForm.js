@@ -15,7 +15,9 @@ const Booking = () => {
     contact:"",
     source:"",
     destination:"",
-    date:"",
+    date_departure:"",
+    date_arrival:"",
+
     class:""
   })
   const [error,setError]= useState(null)
