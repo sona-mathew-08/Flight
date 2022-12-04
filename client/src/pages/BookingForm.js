@@ -3,7 +3,7 @@ import axios from 'axios'
 import './Booking.css'
 
 //import Logo from "../images/logo.png"
-import {Link, Navigate} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import { FaSortAlphaDownAlt } from 'react-icons/fa'
 
 const Booking = () => {
@@ -20,15 +20,16 @@ const Booking = () => {
 
     class:""
   })
-  const [error,setError]= useState(null)
+  const [error,setError]= useState(null);
+  const navigate = useNavigate();
 
   const handleSubmit= async (e) =>{
-
-    e.preventDefault()
     alert('Would you like to confirm your Ticket?')
+    e.preventDefault()
+    
     try{
        await axios.post("/booking/",inputs)
-       Navigate("/thankyou")
+       navigate("/thankyou")
     }catch(err){
       setError(err.response.data);
     }
