@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {FaPlaneDeparture,FaPlaneArrival,FaPlane,FaCalendarCheck,FaClock,FaCity,FaRupeeSign}  from "react-icons/fa"
 import { Link } from 'react-router-dom'
 import './FlightStatus.css'
 
 const FlightStatus = () => {
+  // const[flights,setFlights]=useState([])
     const flights=[{
         source:"Mumbai",
         types:"Departure Details",
@@ -47,7 +48,20 @@ const FlightStatus = () => {
         travelclass:"Business",
         phone:"123456"
     },
+
+
     ]
+
+
+// useEffect(async()=>{
+//   try{
+//     const data= (await axios.get("/flights")).data
+//     setFlights(data)
+//   }catch(err){
+//     console.log(err);
+//   }
+// },[])
+
   return (
     <div className="available-flight-section">
         <div className="tpd-plan">
