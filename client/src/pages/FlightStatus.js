@@ -49,6 +49,15 @@ const FlightStatus = () => {
      }
    },[])
    */
+   const deleteFlight = (id) => {
+    axios.delete(`/delete/${id}`).then((response) => {
+      setFlightStatus(
+        flightStatus.filter((val) => {
+          return val.id !== id;
+        })
+      );
+    });
+  };
 
   return (
     <div className="available-flight-section">
@@ -128,7 +137,7 @@ const FlightStatus = () => {
                     </div>
                    <div className='buttn'>
                    <Link to="/Cancel-page">
-                    <button type='submit'><h3>Cancel</h3></button>
+                    <button type='submit' onClick={() => {deleteFlight(flight.passenger_id);}}><h3>Cancel</h3></button>
                     </Link></div>
                 
                     </div>
