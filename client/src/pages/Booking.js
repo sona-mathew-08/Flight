@@ -8,10 +8,16 @@ const Booking = () => {
     const [flightList, setflightList] = useState([]);
 
     useEffect(() => {
+        const fetchAllFlights= async () =>{
+            try{
+                const res= await axios.get("/booking")
+                setflightList(res.data);
+            }catch(err){
+                console.log(err)
+            }
+        }
+        fetchAllFlights()
         
-        axios.get("/booking").then((response) => {
-            setflightList(response.data);
-          });
       }, []);
       
 
