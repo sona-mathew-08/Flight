@@ -1,10 +1,21 @@
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql");
+const sessions = require('express-session')
+
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+const oneDay = 1000 * 60 * 60 * 24;
+
+//session middleware
+app.use(sessions({
+    secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
+    saveUninitialized:true,
+    cookie: { maxAge: oneDay },
+    resave: false
+}));
 
 const db = mysql.createConnection({
     user: "root",
@@ -13,6 +24,7 @@ const db = mysql.createConnection({
     database: "Flight",
     multipleStatements: true
 });
+var session;
 
 app.post("/register", (req, res) => {
     const username = req.body.username;
@@ -48,14 +60,18 @@ app.post("/register", (req, res) => {
 app.post('/login', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
-    db.query("SELECT password from User_details where username = '" + username + "'", (err, result) => {
+    db.query("SELECT password,user_id from User_details where username = '" + username + "'", (err, result) => {
         console.log(result.length);
         if (result.length > 0) {
             if (result[0].password == password)
+            {
+                session=req.session;
+                session.userid=result[0].user_id;
                 return res.json({
                     status: "ok",
                     error: ""
                 });
+            }
             else {
                 res.status(400).json("Wrong username or password!")
             }
@@ -68,21 +84,21 @@ app.post('/login', (req, res) => {
     })
 });
 
-app.post('/booking/:userid',async function(req,res) {
+app.post('/booking',async function(req,res) {
     const firstname = req.body.fname;
     const lastname = req.body.lname;
     const age = req.body.age;
     const contactno = req.body.contact;
-    const flightname = req.body.flightname;
+    const flightname = req.body.flight_name;
     const flyingfrom = req.body.source;
     const flyingto = req.body.destination;
-    const boardingdate = req.body.boardingdate;
-    const arrivaldate = req.body.arrivaldate;
-    const {userid} = req.params;
-    const travelclass = req.body.travelclass;
+    const boardingdate = req.body.date_departure;
+    const arrivaldate = req.body.date_arrival;
+    //const {userid} = req.params;
+    const travelclass = req.body.class;
     var f_id="";
     var p_id="";
-    
+    console.log(req.body);
     db.query("SELECT flight_id from flight_details where flight_name='" +flightname+"' and departure='" +flyingfrom+ "' and destination='" +flyingto+"' and boarding_date='" 
     +boardingdate+"' and arrival_date='" +arrivaldate+ "'",(err,result) => {
         if(err){
@@ -102,7 +118,7 @@ app.post('/booking/:userid',async function(req,res) {
                         if(result.length>0){
                             p_id=result[0].passenger_id;
                             db.query("SELECT flight_id,user_id,passenger_id from flight_booking_details where flight_id='" + f_id + "' and user_id='" 
-                            + req.params['userid'] + "' and  passenger_id='" + p_id +"'",(err,result) =>{
+                            + session.userid + "' and  passenger_id='" + p_id +"'",(err,result) =>{
                                 if(err){
                                     console.log(err);
                                     return res.status(400).json({ status: "error", error: err});
@@ -114,7 +130,7 @@ app.post('/booking/:userid',async function(req,res) {
                                     else
                                     {
                                         db.query("INSERT INTO flight_booking_details(flight_booking_id, flight_id, user_id, passenger_id) " +
-                                        "SELECT COALESCE(MAX(flight_booking_id), 0)+1,'"  + f_id + "','" + req.params['userid'] + "','" + p_id +
+                                        "SELECT COALESCE(MAX(flight_booking_id), 0)+1,'"  + f_id + "','" + session.userid + "','" + p_id +
                                         "' from flight_booking_details" ,(err, result) =>
                                         {
                                             if(err) {
@@ -153,7 +169,7 @@ app.post('/booking/:userid',async function(req,res) {
                                             {
                                                 p_id=result[0].passenger_id;
                                                 db.query("INSERT INTO flight_booking_details(flight_booking_id, flight_id, user_id, passenger_id) " +
-                                                "SELECT COALESCE(MAX(flight_booking_id), 0)+1,'"  + f_id + "','" + req.params['userid'] + "','" + p_id +
+                                                "SELECT COALESCE(MAX(flight_booking_id), 0)+1,'"  + f_id + "','" + session.userid + "','" + p_id +
                                                 "' from flight_booking_details" ,(err, result) =>
                                                 {
                                                     if(err) {
