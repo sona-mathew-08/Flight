@@ -202,32 +202,43 @@ app.post('/booking',async function(req,res) {
 });
 
 //Sai
-app.get("/booking",(req,res)=>{
+/*app.get("/booking",(req,res)=>{
     let query="select departure,destination,boarding_time,arrival_time,flight_name from flight_details";
     db.query(query,(err,results) => {
      if(err) {
       return res.status(400).json({err});
     }
-     return res.status(200).json(
+    else
+    {
+        console.log(results);
+        return res.status(200).json(
          { data:results,message:"Displayed"}
      )
+    }
     })
- });
+ });*/
 
-app.get("/flight-status/:id",(req,res)=>{
-    const {id} = req.params;
-    let query="select a.first_name,a.last_name,a.age,a.contact_no,a.travel_class,b.departure,b.destination,b.boarding_time,b.arrival_time,b.boarding_date,b.arrival_date,b.fare,b.dep_terminal,b.des_terminal from passenger_details a join flight_booking_details c on a.passenger_id=c.passenger_id join flight_details b on c.flight_id=b.flight_id where c.passenger_id= ?";
-    db.query(query,[id],(err,results) => {
+app.get("/flight-status",(req,res)=>{
+    //const {id} = req.params;
+    //session=req.session;
+    //session.userid=1;
+    let q="select a.fare,b.flight_name,b.departure,b.destination,b.boarding_time,b.arrival_time,b.boarding_date,b.arrival_date,c.first_name,c.last_name,c.age,c.contact_no,c.dep_terminal,c.des_terminal from flight_booking_details a join flight_details b on a.flight_id=b.flight_id join passenger_details c on a.passenger_id=c.passenger_id where user_id='" +session.userid+"'";
+    console.log(q);
+    db.query(q,(err,results) => {
      if(err) {
       return res.status(400).json({err});
     }
-     return res.status(200).json(
-         { data:results,message:"Displayed"}
-     )
+    else{
+        console.log(results);    
+        res.send(results);
+     
+     }
     })
  });
 
- app.delete("/flight-status/:id",(req,res)=>{
+ app.delete("/passengerdelete",(req,res)=>{
+    console.log(1);
+    console.log(id);
     const {id} = req.params;
     let query="delete from flight_booking_details where passenger_id=?;delete from passenger_details where passenger_id=?;";
     db.query(query,[id,id],(err,results) => {
@@ -238,8 +249,8 @@ app.get("/flight-status/:id",(req,res)=>{
          { message:"deleted"}
      )
     })
- })
+ });
 
-app.listen(8040, () => {
+ app.listen(8040, () => {
     console.log("server running");
 })
