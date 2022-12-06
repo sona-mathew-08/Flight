@@ -17,7 +17,6 @@ const Booking = () => {
     destination:"",
     date_departure:"",
     date_arrival:"",
-
     class:""
   })
   const [error,setError]= useState(null);
@@ -82,13 +81,9 @@ const Booking = () => {
               <span>Date Of Arrival</span>
               <input type="date" name='date_arrival' onChange={handleChange}/>
           </div>
-          <div className="input-grp">
+          <div className="input-bx">
               <span>Travel Class </span>
-              <select class="custom-select" name='class' onChange={handleChange}>
-              <option name="class" value={"1"}>First Class</option>
-              <option name="class" value={"2"}>Business</option>
-              <option name="class" value={"3"}>Economy</option>
-              </select>
+              <input type="text" name='class' onChange={handleChange}/>
           </div>
           
           <div className="input-bx"> 
