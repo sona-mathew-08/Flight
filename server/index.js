@@ -236,18 +236,20 @@ app.get("/flight-status",(req,res)=>{
     })
  });
 
- app.delete("/passengerdelete",(req,res)=>{
+ app.delete("/passengerdelete/:id",(req,res)=>{
     console.log(1);
-    console.log(id);
     const {id} = req.params;
     let query="delete from flight_booking_details where passenger_id=?;delete from passenger_details where passenger_id=?;";
     db.query(query,[id,id],(err,results) => {
-     if(err){ 
-      return res.status(400).json({err});
-     }
-     return res.status(200).json(
-         { message:"deleted"}
-     )
+        if(err){ 
+            return res.status(400).json({err});
+        }
+        else
+        {
+            console.log(results);
+            return res.status(200).json(
+            { message:"deleted"})
+        }
     })
  });
 

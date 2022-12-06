@@ -59,7 +59,6 @@ const FlightStatus = () => {
    },[])*/
    
    const deleteFlight = (id) => {
-    //alert("delete");
     axios.delete(`/passengerdelete/${id}`).then((response) => {
       setFlightStatus(
         flightStatus.filter((val) => {
