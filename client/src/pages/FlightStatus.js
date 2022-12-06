@@ -4,6 +4,7 @@ import {FaPlaneDeparture,FaPlaneArrival,FaPlane,FaCalendarCheck,FaClock,FaCity,F
 import { Link } from 'react-router-dom'
 import './FlightStatus.css'
 import axios from 'axios'
+import Empty from '../components/Empty/Empty'
 
 const FlightStatus = () => {
    const[flightStatus,setFlightStatus]=useState([])
@@ -75,7 +76,7 @@ const FlightStatus = () => {
         <div className="tpd-plan">
         <div className="tp-flight-plan">
             <div className="container-fluid">
-        
+            {flightStatus.length===0&& <Empty/>}
             
             {
                 flightStatus && flightStatus.map((flight)=>(

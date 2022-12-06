@@ -15,12 +15,12 @@ const Navbar = () => {
 
 	return (
 		<div className='navbar'>
-        <img className='logo' src={Logo} alt="" />
+        <Link to="/"><img className='logo' src={Logo} alt="" /></Link>
 			<nav ref={navRef}>
             <Link className='link' to="/booking">
                     <h4>Booking</h4>
                 </Link>
-                <Link className='link'>
+                <Link className='link' to="/flight-status">
                     <h4>Flight Status</h4>
                 </Link>
                 <Link className='link'>
