@@ -1,62 +1,34 @@
-import React, { useState,useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import '../App.css'
-import axios from 'axios'
+
 
 const Booking = () => {
-//code to display from backend
-    const [flightList, setflightList] = useState([]);
-
-    useEffect(() => {
-        const fetchAllFlights= async () =>{
-            try{
-                const res= await axios.get("/booking")
-                setflightList(res.data);
-            }catch(err){
-                console.log(err)
-            }
-        }
-        fetchAllFlights()
-        
-      }, []);
-      
-
-/*
-    const flightList=[{
-        flightname:"AirIndia Express",
+    const flights=[{
         source:"Istanbul",
         boarding:"10:30",
-        boardingdate:"22/10/22",
-        //sCode:"IST",
+        sCode:"IST",
         destination:"Ankara",
         arrival:"1:30",
-        arrivaldate:"22/10/22",
-        //dCode:"EST"
+        dCode:"EST"
     },
     {
-        flightname:"Indigo",
         source:"Istanbul",
         boarding:"10:30",
-        boardingdate:"25/10/22",
-        //sCode:"IST",
+        sCode:"IST",
         destination:"Ankara",
         arrival:"1:30",
-        arrivaldate:"26/10/22",
-        //dCode:"EST"
+        dCode:"EST"
     },
     {
-        flightname:"Indigo",
         source:"Istanbul",
         boarding:"10:30",
-        boardingdate:"25/10/22",
-        //sCode:"IST",
+        sCode:"IST",
         destination:"Ankara",
         arrival:"1:30",
-        arrivaldate:"26/10/22",
-        //dCode:"EST"
+        dCode:"EST"
     },
     ]
-   */  //above array to display the UI
   return (
     <div className="available-flight-section">
         <div className="tpd-plan">
@@ -65,13 +37,13 @@ const Booking = () => {
         
             
             {
-                flightList.map((flight)=>(
+                flights.map((flight)=>(
                     // console.log(flight.arrival);
                     <div className="crop depart">
                     <div className="context collapsed" >
                     
                     <div className="item it-1">
-                        <label className="trip-type depart">{flight.flightname}</label>
+                        <label className="trip-type depart">Departure</label>
                         <div className="route-dot">
                             <span className="point" ></span>
                             <span className="point" ></span>
@@ -80,13 +52,13 @@ const Booking = () => {
         
                         <div className="port-seg">
                             <div className="flight-seg origin">
-                                <div className="time">{flight.boardingdate}</div>
-                                <div className="port" style={{paddingLeft:"10px"}}>{flight.boarding}</div>
+                                <div className="time">{flight.boarding}</div>
+                                <div className="port" style={{paddingLeft:"10px"}}>{flight.sCode}</div>
                                 <div className="name" >{flight.source}</div>
                             </div>
                             <div className="flight-seg destination">
-                                <div className="time">{flight.arrivaldate}</div>
-                                <div className="port" style={{paddingRight:"10px"}}>{flight.arrival}</div>
+                                <div className="time">{flight.arrival}</div>
+                                <div className="port" style={{paddingRight:"10px"}}>{flight.dCode}</div>
                                 <div className="name">{flight.destination}</div>
                             </div>
                         </div>
