@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {FaPlaneDeparture,FaPlaneArrival,FaPlane,FaCalendarCheck,FaClock,FaCity,FaRupeeSign}  from "react-icons/fa"
-import { Link } from 'react-router-dom'
 import './FlightStatus.css'
 import axios from 'axios'
 import Empty from '../components/Empty/Empty'

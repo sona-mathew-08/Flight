@@ -166,7 +166,11 @@ letter-spacing: 1px;
    border-radius: 10px;
    font-size: 14px;
    cursor: pointer;
+   color: var(--mainColor) !important;
  
+}
+.available-flight-section button:hover{
+   color: #fff !important;
 }
 
 		   /* new flight plan */
@@ -229,6 +233,7 @@ letter-spacing: 1px;
    padding: 5px 10px 0;
    /* color: #FF9800; */
    font-size: 11px;
+   font-weight: 600;
    width: 85px;
    text-align: center;
 }
@@ -275,9 +280,9 @@ letter-spacing: 1px;
 }
 
 .tp-flight-plan .it-1 .flight-seg .time {
-   font-size: 20px;
+   font-size: 16px;
    /* color: #232b38; */
-   font-weight: 700;
+   font-weight: 600;
 }
 
 .tp-flight-plan .it-1 .flight-seg .port {
@@ -423,7 +428,7 @@ margin-top: 25px;
  .thankyou-content .home button:hover{
   
 	background-color: white;
-    color: blue;
+    color: var(--mainColor)
  }
    
    

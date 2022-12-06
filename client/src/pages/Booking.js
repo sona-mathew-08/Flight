@@ -4,31 +4,42 @@ import '../App.css'
 
 
 const Booking = () => {
-    const flights=[{
-        source:"Istanbul",
-        boarding:"10:30",
-        sCode:"IST",
-        destination:"Ankara",
-        arrival:"1:30",
-        dCode:"EST"
+    
+    const flightList=[{
+        flightname:"AirIndia",
+        source:"New Delhi,India",
+        boarding:"15:30",
+        boardingdate:"26/10/2022",
+        //sCode:"IST",
+        destination:"Los Angeles,United States",
+        arrival:"23:00",
+        arrivaldate:"26/10/22",
+        //dCode:"EST"
     },
     {
-        source:"Istanbul",
-        boarding:"10:30",
-        sCode:"IST",
-        destination:"Ankara",
-        arrival:"1:30",
-        dCode:"EST"
+        flightname:"Emirates",
+        source:"Cochin,India",
+        boarding:"18:00",
+        boardingdate:"27/10/2022",
+        //sCode:"IST",
+        destination:"London,United Kingdom",
+        arrival:"22:00",
+        arrivaldate:"27/10/2022",
+        //dCode:"EST"
     },
     {
-        source:"Istanbul",
-        boarding:"10:30",
-        sCode:"IST",
-        destination:"Ankara",
-        arrival:"1:30",
-        dCode:"EST"
+        flightname:"Air India",
+        source:"Mumbai,Indial",
+        boarding:"14:00",
+        boardingdate:"27/10/2022",
+        //sCode:"IST",
+        destination:"Ney York,United States",
+        arrival:"22:00",
+        arrivaldate:"27/10/2022",
+        //dCode:"EST"
     },
     ]
+   //above array to display the UI
   return (
     <div className="available-flight-section">
         <div className="tpd-plan">
@@ -37,13 +48,13 @@ const Booking = () => {
         
             
             {
-                flights.map((flight)=>(
+                flightList.map((flight)=>(
                     // console.log(flight.arrival);
                     <div className="crop depart">
                     <div className="context collapsed" >
                     
                     <div className="item it-1">
-                        <label className="trip-type depart">Departure</label>
+                        <label className="trip-type depart">{flight.flightname}</label>
                         <div className="route-dot">
                             <span className="point" ></span>
                             <span className="point" ></span>
@@ -52,13 +63,13 @@ const Booking = () => {
         
                         <div className="port-seg">
                             <div className="flight-seg origin">
-                                <div className="time">{flight.boarding}</div>
-                                <div className="port" style={{paddingLeft:"10px"}}>{flight.sCode}</div>
+                                <div className="time">{flight.boardingdate}</div>
+                                <div className="port" style={{paddingLeft:"10px"}}>{flight.boarding}</div>
                                 <div className="name" >{flight.source}</div>
                             </div>
                             <div className="flight-seg destination">
-                                <div className="time">{flight.arrival}</div>
-                                <div className="port" style={{paddingRight:"10px"}}>{flight.dCode}</div>
+                                <div className="time">{flight.arrivaldate}</div>
+                                <div className="port" style={{paddingRight:"10px"}}>{flight.arrival}</div>
                                 <div className="name">{flight.destination}</div>
                             </div>
                         </div>
