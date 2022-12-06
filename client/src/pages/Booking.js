@@ -29,11 +29,11 @@ const Booking = () => {
     },
     {
         flightname:"Air India",
-        source:"Mumbai,Indial",
+        source:"Mumbai,India",
         boarding:"14:00",
         boardingdate:"27/10/2022",
         //sCode:"IST",
-        destination:"Ney York,United States",
+        destination:"New York,United States",
         arrival:"22:00",
         arrivaldate:"27/10/2022",
         //dCode:"EST"

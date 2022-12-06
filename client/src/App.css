@@ -280,7 +280,8 @@ letter-spacing: 1px;
 }
 
 .tp-flight-plan .it-1 .flight-seg .time {
-   font-size: 16px;
+   padding: 5px;
+   font-size: 12px;
    /* color: #232b38; */
    font-weight: 600;
 }
@@ -295,6 +296,7 @@ letter-spacing: 1px;
 }
 
 .tp-flight-plan .it-1 .flight-seg .name {
+   padding: 5px;
    font-size: 12px;
    /* color: #000; */
    line-height: 1.2;
