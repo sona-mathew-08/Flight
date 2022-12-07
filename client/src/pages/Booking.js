@@ -38,6 +38,39 @@ const Booking = () => {
         arrivaldate:"27/10/2022",
         //dCode:"EST"
     },
+    {
+        flightname:"MEC Express",
+        source:"Lulu",
+        boarding:"12:00",
+        boardingdate:"23/10/2022",
+        //sCode:"IST",
+        destination:"MEC",
+        arrival:"12:02",
+        arrivaldate:"23/10/2022",
+        //dCode:"EST"
+    },
+    {
+        flightname:"Air India",
+        source:"Mumbai,India",
+        boarding:"14:00",
+        boardingdate:"27/10/2022",
+        //sCode:"IST",
+        destination:"New York,United States",
+        arrival:"22:00",
+        arrivaldate:"27/10/2022",
+        //dCode:"EST"
+    },
+    {
+        flightname:"Etihad Airways",
+        source:"Nedumbasheri",
+        boarding:"10:00",
+        boardingdate:"24/10/2022",
+        //sCode:"IST",
+        destination:"Qatar",
+        arrival:"02:30",
+        arrivaldate:"24/10/2022",
+        //dCode:"EST"
+    },
     ]
    //above array to display the UI
   return (

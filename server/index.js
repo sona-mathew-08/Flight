@@ -129,9 +129,9 @@ app.post('/booking',async function(req,res) {
                                     }
                                     else
                                     {
-                                        db.query("INSERT INTO flight_booking_details(flight_booking_id, flight_id, user_id, passenger_id) " +
+                                        db.query("INSERT INTO flight_booking_details(flight_booking_id, flight_id, user_id, passenger_id,fare) " +
                                         "SELECT COALESCE(MAX(flight_booking_id), 0)+1,'"  + f_id + "','" + session.userid + "','" + p_id +
-                                        "' from flight_booking_details" ,(err, result) =>
+                                        "',45000 from flight_booking_details" ,(err, result) =>
                                         {
                                             if(err) {
                                                     console.log(err);
@@ -168,9 +168,9 @@ app.post('/booking',async function(req,res) {
                                             if(result.length>0)
                                             {
                                                 p_id=result[0].passenger_id;
-                                                db.query("INSERT INTO flight_booking_details(flight_booking_id, flight_id, user_id, passenger_id) " +
+                                                db.query("INSERT INTO flight_booking_details(flight_booking_id, flight_id, user_id, passenger_id,fare) " +
                                                 "SELECT COALESCE(MAX(flight_booking_id), 0)+1,'"  + f_id + "','" + session.userid + "','" + p_id +
-                                                "' from flight_booking_details" ,(err, result) =>
+                                                "',45000 from flight_booking_details" ,(err, result) =>
                                                 {
                                                     if(err) {
                                                             console.log(err);
@@ -222,7 +222,7 @@ app.get("/flight-status",(req,res)=>{
     //const {id} = req.params;
     //session=req.session;
     //session.userid=1;
-    let q="select a.passenger_id,a.fare,b.flight_name,b.departure,b.destination,b.boarding_time,b.arrival_time,b.boarding_date,b.arrival_date,c.first_name,c.last_name,c.age,c.contact_no,c.dep_terminal,c.des_terminal from flight_booking_details a join flight_details b on a.flight_id=b.flight_id join passenger_details c on a.passenger_id=c.passenger_id where user_id='" +session.userid+"'";
+    let q="select a.passenger_id,a.fare,b.flight_name,b.departure,b.destination,b.boarding_time,b.arrival_time,b.boarding_date,b.arrival_date,b.dep_terminal,b.des_terminal,c.first_name,c.last_name,c.age,c.contact_no,c.travel_class from flight_booking_details a join flight_details b on a.flight_id=b.flight_id join passenger_details c on a.passenger_id=c.passenger_id where user_id='" +session.userid+"'";
     console.log(q);
     db.query(q,(err,results) => {
      if(err) {
