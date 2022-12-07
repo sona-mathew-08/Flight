@@ -142,7 +142,7 @@ const FlightStatus = () => {
                            
                             <div className="arrivingcity" style={{paddingLeft:"110px"}}>
                                 <FaCity size="1rem" color='white'/>{' '}{flight.destination}</div>
-                                <hr style={{color:"white",marginTop:"124px"}}/>
+                                <hr style={{color:"white",marginTop:"126px"}}/>
                             </div>
                         </div>
                     </div>
