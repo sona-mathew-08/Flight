@@ -111,7 +111,7 @@ const FlightStatus = () => {
                               <div className="price" style={{paddingLeft:"25px",paddingTop:"70px",paddingRight:"25px"}}>Price=
                               <FaRupeeSign size="0.7rem" color='white'/>{flight.fare}</div>  
 
-                              <hr style={{color:"white",marginTop:"65px",marginLeft:"70px"}}/>
+                              <hr style={{color:"white",marginTop:"65px",marginLeft:"15px"}}/>
                               <div className="passdetails" style={{paddingLeft:"25px",paddingBottom:"15px",paddingRight:"25px",paddingTop:"25px"}}>
                                 Passenger Details</div> 
                               <div className="name" style={{paddingLeft:"25px",paddingRight:"25px"}}>Name :{' '}{flight.first_name}
@@ -142,7 +142,7 @@ const FlightStatus = () => {
                            
                             <div className="arrivingcity" style={{paddingLeft:"110px"}}>
                                 <FaCity size="1rem" color='white'/>{' '}{flight.destination}</div>
-                                <hr style={{color:"white",marginTop:"126px"}}/>
+                                <hr style={{color:"white",marginTop:"134px"}}/>
                             </div>
                         </div>
                     </div>
